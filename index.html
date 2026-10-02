@@ -1,666 +1,800 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Academic portfolio of Rakesh Kr Patra — Molecular Biology, Genomics and Bioinformatics.">
-  <title>Rakesh Kr Patra | Molecular Biology & Bioinformatics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic and research portfolio of Rakesh Kr Patra: molecular biology, genomics, sequencing and bioinformatics.">
+  <meta name="theme-color" content="#071a2e">
+  <title>Rakesh Kr Patra | Molecular Biology, Genomics &amp; Bioinformatics</title>
 
   <style>
     :root {
       --navy: #071a2e;
       --navy-light: #102b45;
       --cyan: #16c4d9;
+      --cyan-dark: #078da5;
       --text: #263747;
       --muted: #687b8c;
       --light: #f3f8fb;
       --white: #ffffff;
+      --border: #e1ebf0;
+      --shadow: 0 12px 30px rgba(7, 26, 46, .09);
+      --content-width: 1120px;
     }
-    
-/* Professional Profile */
-.profile-layout {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 45px;
-  align-items: start;
-}
 
-.profile-photo {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 4px solid #e3f7fa;
-}
-
-.profile-details {
-  display: grid;
-  gap: 22px;
-}
-
-.profile-details h3 {
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-
-.profile-details p {
-  color: var(--muted);
-}
-
-.affiliation-card {
-  padding: 22px;
-  background: #f0f9fb;
-  border-left: 4px solid var(--cyan);
-  border-radius: 7px;
-}
-
-.publication-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-  padding: 13px 24px;
-  background: var(--cyan);
-  color: var(--navy);
-  font-weight: 700;
-  border-radius: 5px;
-  transition: .2s;
-}
-
-.publication-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px rgba(0,0,0,.12);
-}
-
-@media (max-width: 750px) {
-  .profile-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-photo {
-    max-width: 300px;
-  }
-}
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
     body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       line-height: 1.7;
       background: var(--white);
     }
-    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container {
+      width: min(var(--content-width), calc(100% - 48px));
+      margin-inline: auto;
+    }
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      z-index: 200;
+      padding: 10px 14px;
+      background: var(--white);
+      color: var(--navy);
+      border-radius: 4px;
+    }
+    .skip-link:focus { top: 12px; }
 
-    /* Navigation */
-    header {
+    /* Header and navigation */
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7, 26, 46, .97);
-      backdrop-filter: blur(10px);
+      background: rgba(7, 26, 46, .98);
+      box-shadow: 0 3px 14px rgba(0, 0, 0, .12);
     }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 15px 24px;
+    .nav-wrap {
+      width: min(1200px, calc(100% - 48px));
+      min-height: 68px;
+      margin-inline: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
     .logo {
-      color: white;
+      flex: 0 0 auto;
+      color: var(--white);
       font-size: 21px;
       font-weight: 700;
-      letter-spacing: .5px;
+      letter-spacing: .4px;
     }
     .logo span { color: var(--cyan); }
     .nav-links {
       display: flex;
-      gap: 23px;
-      list-style: none;
       align-items: center;
+      gap: clamp(12px, 1.7vw, 23px);
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
     .nav-links a {
+      display: inline-block;
+      padding: 8px 0;
       color: #e1edf5;
       font-size: 13px;
-      transition: color .2s;
+      transition: color .2s ease;
     }
-    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--cyan); }
     .menu-toggle {
       display: none;
-      color: white;
-      background: none;
-      border: 0;
-      font-size: 26px;
+      min-width: 42px;
+      min-height: 42px;
+      padding: 6px 10px;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 5px;
       cursor: pointer;
     }
 
     /* Hero */
     .hero {
       min-height: 610px;
-      background:
-        linear-gradient(90deg, rgba(4,18,34,.96), rgba(4,18,34,.78)),
-        url("assets/images/hero.png") center/cover no-repeat;
-      color: white;
       display: flex;
       align-items: center;
+      color: var(--white);
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(90deg, rgba(4,18,34,.94) 0%, rgba(4,18,34,.78) 55%, rgba(4,18,34,.58) 100%),
+        url("assets/images/hero.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .hero-content {
-      width: min(1200px, 100%);
-      padding: 90px 24px;
-      margin: auto;
+      width: min(1200px, calc(100% - 48px));
+      margin-inline: auto;
+      padding-block: 96px;
     }
-    .eyebrow {
-      color: var(--cyan);
+    .eyebrow,
+    .section-label {
+      color: var(--cyan-dark);
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 13px;
-      font-weight: bold;
+      letter-spacing: 2.4px;
     }
+    .hero .eyebrow { color: var(--cyan); }
     .hero h1 {
-      font-size: clamp(40px, 6vw, 68px);
-      line-height: 1.12;
-      margin: 18px 0;
-      max-width: 750px;
+      max-width: 760px;
+      margin: 17px 0;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.1;
     }
     .hero h2 {
+      margin: 0 0 15px;
+      color: #b9d9e8;
       font-size: clamp(17px, 2vw, 23px);
       font-weight: 400;
-      color: #b9d9e8;
-      margin-bottom: 15px;
     }
     .hero p {
-      color: #d0e0e9;
       max-width: 650px;
+      margin: 0 0 28px;
+      color: #d0e0e9;
       font-size: 16px;
-      margin-bottom: 30px;
     }
-    .btn {
-      display: inline-block;
-      padding: 12px 23px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      margin: 5px 8px 5px 0;
+      padding: 11px 22px;
+      border: 1px solid transparent;
       border-radius: 5px;
       background: var(--cyan);
       color: var(--navy);
       font-weight: 700;
-      margin: 5px 8px 5px 0;
-      transition: .2s;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-outline {
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(0,0,0,.15);
+    }
+    .button-outline {
+      color: var(--white);
       background: transparent;
-      border: 1px solid #8eb8c8;
-      color: white;
+      border-color: #8eb8c8;
+    }
+    .button-outline:hover { background: rgba(255,255,255,.08); }
+    .button-dark {
+      color: var(--white);
+      background: var(--navy);
     }
 
-    /* Common sections */
-    section { padding: 85px 24px; }
-    .container { max-width: 1100px; margin: auto; }
-    .section-label {
-      color: #078da5;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .section-title {
-      color: var(--navy);
-      font-size: clamp(28px, 4vw, 38px);
-      line-height: 1.2;
-      margin: 8px 0 18px;
-    }
-    .section-intro {
-      max-width: 750px;
-      color: var(--muted);
-      margin-bottom: 35px;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 45px;
-      align-items: start;
-    }
-    .profile-card {
-      padding: 28px;
-      border-radius: 10px;
-      background: var(--light);
-      border-left: 4px solid var(--cyan);
-    }
-    .profile-card h3 { color: var(--navy); margin-bottom: 12px; }
-
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .card {
-      background: white;
-      border: 1px solid #e1ebf0;
-      border-radius: 9px;
-      padding: 25px;
-      transition: .25s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(7,26,46,.09);
-    }
-    .card h3 { color: var(--navy); margin-bottom: 10px; }
-    .card p { color: var(--muted); font-size: 14px; }
-    .card-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      padding: 4px 9px;
-      background: #e3f7fa;
-      color: #087f91;
-      border-radius: 20px;
-      margin: 12px 4px 0 0;
-    }
-
-    /* Alternating backgrounds */
+    /* Shared section styles */
+    section { padding: 82px 0; }
     .soft { background: var(--light); }
     .dark {
       background: var(--navy);
-      color: white;
+      color: var(--white);
     }
-    .dark .section-title { color: white; }
+    .section-title {
+      margin: 8px 0 16px;
+      color: var(--navy);
+      font-size: clamp(29px, 4vw, 39px);
+      line-height: 1.2;
+    }
+    .dark .section-title { color: var(--white); }
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 34px;
+      color: var(--muted);
+    }
     .dark .section-intro { color: #bfd0dc; }
-    .dark .card { background: var(--navy-light); border-color: #29445d; }
-    .dark .card h3 { color: white; }
+
+    /* Profile */
+    .profile-layout {
+      display: grid;
+      grid-template-columns: minmax(230px, 320px) minmax(0, 1fr);
+      gap: 46px;
+      align-items: start;
+    }
+    .profile-card {
+      padding: 20px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .profile-photo,
+    .profile-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+    }
+    .profile-photo {
+      object-fit: cover;
+      border: 3px solid #e3f7fa;
+    }
+    .profile-placeholder {
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      color: #d8eaf1;
+      text-align: center;
+      background: linear-gradient(145deg, #102b45, #176078);
+      border: 3px solid #e3f7fa;
+    }
+    .profile-placeholder span {
+      display: block;
+      font-size: 58px;
+      line-height: 1;
+    }
+    .profile-placeholder p {
+      margin: 12px 0 0;
+      color: #eaf7fb;
+      font-size: 13px;
+    }
+    .profile-name {
+      margin: 17px 0 3px;
+      color: var(--navy);
+      font-size: 22px;
+    }
+    .profile-role {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .profile-details {
+      display: grid;
+      gap: 24px;
+    }
+    .profile-details h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 19px;
+    }
+    .profile-details p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .profile-details p + p { margin-top: 10px; }
+    .affiliation-card {
+      padding: 23px;
+      background: #f0f9fb;
+      border-left: 4px solid var(--cyan);
+      border-radius: 7px;
+    }
+    .affiliation-card strong { color: var(--navy); }
+    .profile-publications { margin-top: 4px; }
+
+    /* Cards and tags */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .card {
+      height: 100%;
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 19px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card-icon {
+      margin-bottom: 13px;
+      font-size: 28px;
+    }
+    .dark .card {
+      background: var(--navy-light);
+      border-color: #29445d;
+    }
+    .dark .card h3 { color: var(--white); }
     .dark .card p { color: #c2d1dc; }
+    .tag {
+      display: inline-block;
+      margin: 12px 4px 0 0;
+      padding: 4px 9px;
+      color: #087f91;
+      background: #e3f7fa;
+      border-radius: 20px;
+      font-size: 11px;
+    }
 
     /* Expertise */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px;
+    }
+    .expertise-group h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+    }
     .skill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
     .skill-list span {
-      padding: 9px 15px;
+      padding: 8px 13px;
+      background: var(--white);
       border: 1px solid #cbdde6;
       border-radius: 5px;
-      background: white;
       font-size: 13px;
     }
 
-    /* Publications and contact */
-    .publication {
-      padding: 20px 0;
-      border-bottom: 1px solid #dce7ed;
+    /* Publications callout */
+    .publication-callout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
     }
-    .publication h3 { color: var(--navy); font-size: 17px; }
-    .publication p { color: var(--muted); font-size: 14px; }
+    .publication-callout h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+    }
+    .publication-callout p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Contact and footer */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 35px;
+      align-items: start;
     }
     .contact-box {
-      padding: 28px;
+      padding: 27px;
       background: var(--navy-light);
+      border: 1px solid #29445d;
       border-radius: 9px;
     }
-    .contact-box p { margin: 10px 0; color: #d1e1eb; }
-
+    .contact-box p {
+      margin: 8px 0;
+      color: #d1e1eb;
+      overflow-wrap: anywhere;
+    }
+    .contact-box a { color: var(--cyan); }
     footer {
-      background: #04111f;
+      padding: 24px;
       color: #a9bdca;
+      background: #04111f;
       text-align: center;
-      padding: 25px;
       font-size: 13px;
     }
+    footer p { margin: 4px 0; }
 
-    @media (max-width: 850px) {
+    :focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
       .nav-links {
-        display: none;
         position: absolute;
-        top: 62px;
+        top: 68px;
         left: 0;
         right: 0;
-        padding: 20px;
+        display: none;
+        align-items: stretch;
+        gap: 2px;
+        padding: 12px 24px 18px;
         background: var(--navy);
-        flex-direction: column;
-        align-items: flex-start;
+        border-top: 1px solid rgba(255,255,255,.12);
       }
-      .nav-links.open { display: flex; }
-      .menu-toggle { display: block; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a { display: block; padding: 9px 0; font-size: 14px; }
+      .profile-layout { grid-template-columns: minmax(210px, 280px) minmax(0, 1fr); gap: 30px; }
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 560px) {
-      section { padding: 65px 20px; }
-      .grid { grid-template-columns: 1fr; }
-      .hero { min-height: 540px; }
+    @media (max-width: 680px) {
+      section { padding: 64px 0; }
+      .container, .nav-wrap, .hero-content { width: min(100% - 36px, var(--content-width)); }
+      .hero { min-height: 560px; background-position: 62% center; }
+      .hero-content { padding-block: 76px; }
+      .profile-layout,
+      .expertise-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 360px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .publication-callout { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-<header>
-  <nav>
-    <a href="#home" class="logo">RK<span>.</span>Patra</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="https://script.google.com/macros/s/AKfycbyc39UZJT74zoSvkDPernT7K0jF9irClgOuqqHK72-BUY46RZaOeKFuYaTXPdT_NZHg/exec"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Publications</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#tools">Tools</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<main>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">Academic & Research Portfolio</div>
-      <h1>Rakesh Kr Patra</h1>
-      <h2>Molecular Biology | Genomics | Bioinformatics</h2>
-      <p>
-        Integrating Experimental Biology, Next-Generation Sequencing
-        and Computational Research.
-      </p>
-      <a class="btn" href="#research">Explore Research</a>
-      <a class="btn btn-outline" href="#contact">Get in Touch</a>
-    </div>
-  </section>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a href="#home" class="logo" aria-label="Rakesh Kr Patra home">RK<span>.</span>Patra</a>
 
- 
-<section id="about">
-  <div class="container">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="navLinks"
+        aria-expanded="false"
+      >☰</button>
 
-    <div class="section-label">Professional Profile</div>
-    <h2 class="section-title">About Me</h2>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li>
+          <a href="https://script.google.com/macros/s/AKfycbyc39UZJT74zoSvkDPernT7K0jF9irClgOuqqHK72-BUY46RZaOeKFuYaTXPdT_NZHg/exec"
+             target="_blank" rel="noopener noreferrer">Publications ↗</a>
+        </li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <p class="section-intro">
-      Integrating experimental molecular biology, genomic technologies
-      and computational approaches to biological research.
-    </p>
+  <main id="main-content">
+    <!-- Home -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="eyebrow">Academic &amp; Research Portfolio</div>
+        <h1 id="hero-title">Rakesh Kr Patra</h1>
+        <h2>Molecular Biology | Genomics | Bioinformatics</h2>
+        <p>Integrating Experimental Biology, Next-Generation Sequencing and Computational Research.</p>
+        <a class="button" href="#research">Explore Research</a>
+        <a class="button button-outline" href="#contact">Get in Touch</a>
+      </div>
+    </section>
 
-    <div class="profile-layout">
-
-      <!-- Professional photograph -->
-      <div>
-        <img
-          src="assets/images/profile.jpg"
-          alt="Rakesh Kr Patra - Researcher"
-          class="profile-photo"
-        />
-
-        <h3 style="margin-top:18px;color:var(--navy)">
-          Rakesh Kr Patra
-        </h3>
-
-        <p style="color:var(--muted)">
-          Molecular Biology | Genomics | Bioinformatics
+    <!-- About / Professional profile -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-label">Professional Profile</div>
+        <h2 class="section-title" id="about-title">About Me</h2>
+        <p class="section-intro">
+          Working at the intersection of molecular biology, genomics and bioinformatics,
+          with an interest in connecting experimental research with computational analysis.
         </p>
 
-        <a
-          href="https://script.google.com/macros/s/AKfycbyc39UZJT74zoSvkDPernT7K0jF9irClgOuqqHK72-BUY46RZaOeKFuYaTXPdT_NZHg/exec"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="publication-button"
-        >
-          Publications ↗
-        </a>
-      </div>
+        <div class="profile-layout">
+          <aside class="profile-card" aria-label="Researcher profile">
+            <img
+              class="profile-photo"
+              src="assets/images/profile.jpg"
+              alt="Portrait of Rakesh Kr Patra"
+              onerror="this.hidden=true; document.getElementById('profileFallback').hidden=false;"
+            >
+            <div class="profile-placeholder" id="profileFallback" hidden>
+              <div>
+                <span aria-hidden="true">🔬</span>
+                <p>Add a professional photograph as<br><strong>assets/images/profile.jpg</strong></p>
+              </div>
+            </div>
+            <h3 class="profile-name">Rakesh Kr Patra</h3>
+            <p class="profile-role">Molecular Biology | Genomics | Bioinformatics</p>
+            <a
+              class="button profile-publications"
+              href="https://script.google.com/macros/s/AKfycbyc39UZJT74zoSvkDPernT7K0jF9irClgOuqqHK72-BUY46RZaOeKFuYaTXPdT_NZHg/exec"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore Publications ↗</a>
+          </aside>
 
-      <!-- Academic profile -->
-      <div class="profile-details">
+          <div class="profile-details">
+            <div>
+              <h3>Academic Background</h3>
+              <p>
+                Master's degree in Biology. Academic interests include molecular biology,
+                genomics, sequencing technologies and computational approaches to biological research.
+              </p>
+            </div>
 
-        <div>
-          <h3>Academic Background</h3>
-          <p>
-            Master's degree in Biology, with an academic and research
-            focus on molecular biology, genomics and computational
-            approaches to biological sciences.
-          </p>
-        </div>
+            <div>
+              <h3>Research Experience</h3>
+              <p>
+                Research experience in molecular biology and sequencing-based research,
+                including NGS data analysis, metagenomics, genomic variant analysis and
+                development of bioinformatics workflows.
+              </p>
+              <p>
+                Research interests include genetic variation, disease-associated biomarkers,
+                host–pathogen interactions and computational analysis of biological data.
+              </p>
+            </div>
 
-        <div>
-          <h3>Research Experience</h3>
-          <p>
-            Research experience involving molecular biology,
-            next-generation sequencing, genomic data analysis,
-            metagenomics and bioinformatics workflow development.
-          </p>
-          <p style="margin-top:10px">
-            Research interests include genetic variation, disease
-            resistance, molecular biomarkers, host–pathogen
-            interactions and computational analysis of biological data.
-          </p>
-        </div>
+            <div class="affiliation-card">
+              <h3>Institutional Affiliation</h3>
+              <p><strong>Shrimp Genomics and Disease Biotechnology Laboratory (SGDBL)</strong></p>
+              <p>Department of Zoology</p>
+              <p>Ramakrishna Mission Vivekananda Centenary College, Rahara, West Bengal, India.</p>
+            </div>
 
-        <div class="affiliation-card">
-          <h3>Institutional Affiliation</h3>
-          <p>
-            <strong>Shrimp Genomics and Disease Biotechnology
-            Laboratory (SGDBL)</strong>
-          </p>
-          <p>Department of Zoology</p>
-          <p>
-            Ramakrishna Mission Vivekananda Centenary College,
-            Rahara, West Bengal, India.
-          </p>
-        </div>
-
-        <div>
-          <h3>Research Approach</h3>
-          <p>
-            Integrating laboratory-based molecular investigations
-            with high-throughput sequencing, statistical analysis
-            and reproducible computational workflows.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <section class="soft" id="research">
-    <div class="container">
-      <div class="section-label">Research</div>
-      <h2 class="section-title">Research Interests</h2>
-      <p class="section-intro">
-        Exploring biological systems through molecular approaches,
-        sequencing technologies and computational analysis.
-      </p>
-      <div class="grid">
-        <article class="card">
-          <div class="card-icon">🧬</div>
-          <h3>Shrimp Genomics</h3>
-          <p>Genomic variation, disease resistance, genetic biomarkers and host–pathogen interactions in penaeid shrimp.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🦠</div>
-          <h3>Metagenomics & Microbiome</h3>
-          <p>Microbial community profiling, pathogen surveillance and investigation of host-associated microbial diversity.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🔬</div>
-          <h3>Molecular Diagnostics</h3>
-          <p>Molecular detection, marker development and sequencing-based approaches for biological investigation.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <div class="section-label">Ongoing & Completed Work</div>
-      <h2 class="section-title">Selected Research Projects</h2>
-      <p class="section-intro">A selection of research themes and computational projects.</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Shrimp Disease Resistance</h3>
-          <p>Investigation of genetic variation and candidate biomarkers associated with disease survival in <i>Penaeus monodon</i>.</p>
-          <span class="tag">Genomics</span><span class="tag">Variant Analysis</span>
-        </article>
-        <article class="card">
-          <h3>Shrimp Microbiome</h3>
-          <p>Metagenomic analysis of shrimp-associated microbial communities across geographical locations and seasons.</p>
-          <span class="tag">Metagenomics</span><span class="tag">Microbiome</span>
-        </article>
-        <article class="card">
-          <h3>Endogenous Viral Elements</h3>
-          <p>Computational investigation of viral sequences and their genomic integration in shrimp.</p>
-          <span class="tag">Viral Genomics</span><span class="tag">Genome Mapping</span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="soft" id="publications">
-    <div class="container">
-      <div class="section-label">Scientific Contributions</div>
-      <h2 class="section-title">Publications</h2>
-      <p class="section-intro">
-        Research articles, reviews, conference contributions and other scholarly outputs.
-      </p>
-      <div class="publication">
-        <h3>Publication title will appear here</h3>
-        <p>Author list · Journal name · Year · DOI</p>
-      </div>
-      <div class="publication">
-        <h3>Additional research publication</h3>
-        <p>Author list · Journal name · Year · DOI</p>
-      </div>
-      <p style="margin-top:22px;color:#687b8c">
-        Publication records will be added after verification.
-      </p>
-    </div>
-  </section>
-
-  <section id="expertise">
-    <div class="container">
-      <div class="section-label">Technical Expertise</div>
-      <h2 class="section-title">Laboratory & Computational Skills</h2>
-      <div class="about-grid">
-        <div>
-          <h3 style="margin-bottom:15px">Molecular Biology & Sequencing</h3>
-          <div class="skill-list">
-            <span>PCR</span><span>RT-PCR</span><span>Sanger Sequencing</span>
-            <span>Illumina Sequencing</span><span>Oxford Nanopore</span>
-            <span>Metagenomics</span><span>Fragment Analysis</span>
-          </div>
-        </div>
-        <div>
-          <h3 style="margin-bottom:15px">Bioinformatics & Data Analysis</h3>
-          <div class="skill-list">
-            <span>R Programming</span><span>Bash</span><span>Linux</span>
-            <span>NGS Analysis</span><span>Variant Calling</span>
-            <span>Taxonomic Profiling</span><span>Workflow Development</span>
+            <div>
+              <h3>Research Approach</h3>
+              <p>
+                Integrating laboratory-based molecular investigations with high-throughput
+                sequencing, statistical analysis and reproducible computational workflows.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="dark" id="tools">
-    <div class="container">
-      <div class="section-label">Computational Resources</div>
-      <h2 class="section-title">Bioinformatics Tools & Pipelines</h2>
-      <p class="section-intro">
-        A collection of software, workflows and computational resources
-        used in genomic and metagenomic research.
-      </p>
-      <div class="grid">
-        <article class="card">
-          <h3>Sequence Analysis</h3>
-          <p>Sequence processing, quality assessment, alignment, genome mapping and variant analysis.</p>
-        </article>
-        <article class="card">
-          <h3>Metagenomics</h3>
-          <p>Taxonomic classification, abundance estimation, diversity analysis and microbial profiling.</p>
-        </article>
-        <article class="card">
-          <h3>R & Workflow Development</h3>
-          <p>Statistical analysis, scientific visualization and reproducible computational pipelines.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="soft" id="teaching">
-    <div class="container">
-      <div class="section-label">Academic Activities</div>
-      <h2 class="section-title">Teaching & Training</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>NGS Data Analysis</h3>
-          <p>Practical training in sequencing data processing and downstream analysis.</p>
-        </article>
-        <article class="card">
-          <h3>Metagenomics Workshops</h3>
-          <p>Training in microbial community profiling and reproducible workflows.</p>
-        </article>
-        <article class="card">
-          <h3>Molecular Biology</h3>
-          <p>Laboratory techniques, PCR-based methods and sequence analysis.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark" id="contact">
-    <div class="container">
-      <div class="section-label">Connect & Collaborate</div>
-      <h2 class="section-title">Contact</h2>
-      <p class="section-intro">
-        Open to academic discussions, research collaborations,
-        bioinformatics projects and scientific training opportunities.
-      </p>
-      <div class="contact-grid">
-        <div>
-          <h3>Let's discuss research</h3>
-          <p style="color:#c2d1dc;margin-top:12px">
-            For research collaboration, technical discussions or
-            academic enquiries, please get in touch.
-          </p>
-        </div>
-        <div class="contact-box">
-          <p><strong>GitHub:</strong>
-            <a href="https://github.com/rakeshkrpatra" target="_blank" rel="noopener">github.com/rakeshkrpatra</a>
-          </p>
-          <p><strong>Email:</strong> Add your professional email</p>
-          <p><strong>Location:</strong> Kolkata, West Bengal, India</p>
+    <!-- Research interests -->
+    <section class="soft" id="research" aria-labelledby="research-title">
+      <div class="container">
+        <div class="section-label">Research</div>
+        <h2 class="section-title" id="research-title">Research Interests</h2>
+        <p class="section-intro">
+          Exploring biological systems through molecular approaches, sequencing technologies
+          and computational analysis.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧬</div>
+            <h3>Shrimp Genomics</h3>
+            <p>Genomic variation, disease resistance, genetic biomarkers and host–pathogen interactions in penaeid shrimp.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🦠</div>
+            <h3>Metagenomics &amp; Microbiome</h3>
+            <p>Microbial community profiling, pathogen surveillance and investigation of host-associated microbial diversity.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🔬</div>
+            <h3>Molecular Diagnostics</h3>
+            <p>Molecular detection, marker development and sequencing-based approaches for biological investigation.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  <p>© <span id="year"></span> Rakesh Kr Patra. All rights reserved.</p>
-  <p>Molecular Biology | Genomics | Bioinformatics</p>
-</footer>
+    <!-- Research projects -->
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-label">Research Work</div>
+        <h2 class="section-title" id="projects-title">Selected Research Projects</h2>
+        <p class="section-intro">
+          Research themes involving shrimp genomics, microbial communities and viral sequence analysis.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Shrimp Disease Resistance</h3>
+            <p>Investigation of genetic variation and candidate biomarkers associated with disease survival in <i>Penaeus monodon</i>.</p>
+            <span class="tag">Genomics</span><span class="tag">Variant Analysis</span>
+          </article>
+          <article class="card">
+            <h3>Shrimp Microbiome</h3>
+            <p>Metagenomic analysis of shrimp-associated microbial communities across geographical locations and seasons.</p>
+            <span class="tag">Metagenomics</span><span class="tag">Microbiome</span>
+          </article>
+          <article class="card">
+            <h3>Endogenous Viral Elements</h3>
+            <p>Computational investigation of viral sequences and their potential integration into the shrimp genome.</p>
+            <span class="tag">Viral Genomics</span><span class="tag">Genome Mapping</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<script>
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
+    <!-- Publications: hosted externally -->
+    <section class="soft" id="publications" aria-labelledby="publications-title">
+      <div class="container">
+        <div class="section-label">Scientific Contributions</div>
+        <h2 class="section-title" id="publications-title">Publications</h2>
+        <div class="publication-callout">
+          <div>
+            <h3>Browse the publication database</h3>
+            <p>Open the dedicated publications portal to explore the available research records.</p>
+          </div>
+          <a
+            class="button"
+            href="https://script.google.com/macros/s/AKfycbyc39UZJT74zoSvkDPernT7K0jF9irClgOuqqHK72-BUY46RZaOeKFuYaTXPdT_NZHg/exec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open Publications ↗</a>
+        </div>
+      </div>
+    </section>
 
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
+    <!-- Technical expertise -->
+    <section id="expertise" aria-labelledby="expertise-title">
+      <div class="container">
+        <div class="section-label">Technical Expertise</div>
+        <h2 class="section-title" id="expertise-title">Laboratory &amp; Computational Skills</h2>
+        <div class="expertise-grid">
+          <div class="expertise-group">
+            <h3>Molecular Biology &amp; Sequencing</h3>
+            <div class="skill-list">
+              <span>PCR</span>
+              <span>RT-PCR</span>
+              <span>Sanger Sequencing</span>
+              <span>Illumina Sequencing</span>
+              <span>Oxford Nanopore</span>
+              <span>Metagenomics</span>
+              <span>Fragment Analysis</span>
+            </div>
+          </div>
+          <div class="expertise-group">
+            <h3>Bioinformatics &amp; Data Analysis</h3>
+            <div class="skill-list">
+              <span>R Programming</span>
+              <span>Bash</span>
+              <span>Linux</span>
+              <span>NGS Analysis</span>
+              <span>Variant Calling</span>
+              <span>Taxonomic Profiling</span>
+              <span>Workflow Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
+    <!-- Bioinformatics tools -->
+    <section class="dark" id="tools" aria-labelledby="tools-title">
+      <div class="container">
+        <div class="section-label">Computational Resources</div>
+        <h2 class="section-title" id="tools-title">Bioinformatics Tools &amp; Pipelines</h2>
+        <p class="section-intro">
+          Software, workflows and computational approaches used in genomic and metagenomic research.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Sequence Analysis</h3>
+            <p>Sequence processing, quality assessment, alignment, genome mapping and variant analysis.</p>
+          </article>
+          <article class="card">
+            <h3>Metagenomics</h3>
+            <p>Taxonomic classification, abundance estimation, diversity analysis and microbial profiling.</p>
+          </article>
+          <article class="card">
+            <h3>R &amp; Workflow Development</h3>
+            <p>Statistical analysis, scientific visualization and reproducible computational pipelines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section class="soft" id="teaching" aria-labelledby="teaching-title">
+      <div class="container">
+        <div class="section-label">Academic Activities</div>
+        <h2 class="section-title" id="teaching-title">Teaching &amp; Training</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>NGS Data Analysis</h3>
+            <p>Practical training in sequencing data processing and downstream analysis.</p>
+          </article>
+          <article class="card">
+            <h3>Metagenomics Workshops</h3>
+            <p>Training in microbial community profiling and reproducible workflows.</p>
+          </article>
+          <article class="card">
+            <h3>Molecular Biology</h3>
+            <p>Laboratory techniques, PCR-based methods and sequence analysis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="dark" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-label">Connect &amp; Collaborate</div>
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="section-intro">
+          For academic discussions, research collaborations, bioinformatics projects and scientific training enquiries.
+        </p>
+        <div class="contact-grid">
+          <div>
+            <h3>Let's discuss research</h3>
+            <p style="margin-top:12px;color:#c2d1dc">
+              Connect through GitHub or use the institutional affiliation above for professional context.
+              A professional email address can be added here when you are ready to publish it.
+            </p>
+          </div>
+          <div class="contact-box">
+            <p><strong>GitHub:</strong>
+              <a href="https://github.com/rakeshkrpatra" target="_blank" rel="noopener noreferrer">github.com/rakeshkrpatra ↗</a>
+            </p>
+            <p><strong>Affiliation:</strong> SGDBL, Department of Zoology</p>
+            <p><strong>Institution:</strong> Ramakrishna Mission Vivekananda Centenary College</p>
+            <p><strong>Location:</strong> Rahara, West Bengal, India</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Rakesh Kr Patra. All rights reserved.</p>
+    <p>Molecular Biology | Genomics | Bioinformatics</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeMenu() {
       navLinks.classList.remove("open");
-    });
-  });
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    navLinks.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) closeMenu();
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
