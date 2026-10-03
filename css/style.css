@@ -479,3 +479,175 @@
         animation-duration: .01ms !important;
       }
     }
+
+
+/* ========================================
+   TECHNICAL EXPERTISE DASHBOARD
+======================================== */
+
+.expertise-section {
+  background: #f7fafc;
+}
+
+.expertise-section .section-heading {
+  margin-bottom: 30px;
+}
+
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #08aabd;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.expertise-banner {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 35px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #102b45;
+  border: 1px solid #dce8ef;
+}
+
+.expertise-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.expertise-card {
+  min-width: 0;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e1eaf0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(16, 43, 69, 0.045);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+
+.expertise-card:hover {
+  transform: translateY(-5px);
+  border-color: #19bfd0;
+  box-shadow: 0 12px 28px rgba(16, 43, 69, 0.09);
+}
+
+.expertise-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.expertise-number {
+  color: #0caebe;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.expertise-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  background: #eaf8fa;
+  border-radius: 10px;
+  font-size: 24px;
+}
+
+.expertise-card h3 {
+  margin: 0 0 10px;
+  color: #102b45;
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.expertise-description {
+  min-height: 48px;
+  margin: 0 0 18px;
+  color: #64798b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tags span {
+  display: inline-block;
+  padding: 7px 11px;
+  color: #14556b;
+  background: #edf8fa;
+  border: 1px solid #d6eef2;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.expertise-footer {
+  margin-top: 30px;
+  padding: 22px;
+  text-align: center;
+  background: #102b45;
+  border-radius: 10px;
+}
+
+.expertise-footer p {
+  margin: 0;
+  color: #dcebf2;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .expertise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expertise-banner {
+    height: 240px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .expertise-card {
+    padding: 20px;
+  }
+
+  .expertise-banner {
+    height: 170px;
+  }
+
+  .expertise-card h3 {
+    font-size: 18px;
+  }
+
+  .expertise-description {
+    min-height: auto;
+  }
+}
+
